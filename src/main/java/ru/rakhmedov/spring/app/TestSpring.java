@@ -1,6 +1,8 @@
 package ru.rakhmedov.spring.app;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.rakhmedov.spring.beans.Music;
+import ru.rakhmedov.spring.beans.MusicPlayer;
 
 /**
  * @author RakhmedovRS
@@ -12,8 +14,9 @@ public class TestSpring
 	{
 		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml"))
 		{
-			TestBean testBean = applicationContext.getBean("testBean", TestBean.class);
-			System.out.println(testBean.getName());
+			Music musicBean = applicationContext.getBean("musicBean", Music.class);
+			MusicPlayer musicPlayer = new MusicPlayer(musicBean);
+			musicPlayer.playMusic();
 		}
 	}
 }
