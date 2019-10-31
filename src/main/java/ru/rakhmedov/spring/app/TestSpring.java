@@ -1,7 +1,6 @@
 package ru.rakhmedov.spring.app;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.rakhmedov.spring.beans.Music;
 import ru.rakhmedov.spring.beans.MusicPlayer;
 
 /**
@@ -14,8 +13,7 @@ public class TestSpring
 	{
 		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml"))
 		{
-			Music musicBean = applicationContext.getBean("musicBean", Music.class);
-			MusicPlayer musicPlayer = new MusicPlayer(musicBean);
+			MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
 			musicPlayer.playMusic();
 		}
 	}

@@ -15,6 +15,6 @@ public class MusicPlayer
 
 	public void playMusic()
 	{
-		System.out.println("playing " + music.getSong());
+		System.out.println("Playing: " + music.getSong());
 	}
 }
