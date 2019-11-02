@@ -14,7 +14,8 @@
 	<bean id="classicalMusic" class="ru.rakhmedov.spring.beans.ClassicalMusic"/>
 
 	<bean id="musicPlayer"
-	      class="ru.rakhmedov.spring.beans.MusicPlayer">
+	      class="ru.rakhmedov.spring.beans.MusicPlayer"
+	      scope="prototype">
 		<constructor-arg>
 			<list>
 				<ref bean="classicalMusic"/>

@@ -13,8 +13,15 @@ public class TestSpring
 	{
 		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml"))
 		{
-			MusicPlayer musicPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
-			musicPlayer.playMusic();
+			MusicPlayer firstPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
+			MusicPlayer secondPlayer = applicationContext.getBean("musicPlayer", MusicPlayer.class);
+			System.out.println(firstPlayer == secondPlayer);
+			System.out.println(firstPlayer);
+			System.out.println(secondPlayer);
+
+			firstPlayer.setVolume(10);
+			System.out.println(firstPlayer.getVolume());
+			System.out.println(secondPlayer.getVolume());
 		}
 	}
 }
