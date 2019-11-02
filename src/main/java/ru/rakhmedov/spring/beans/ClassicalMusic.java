@@ -6,6 +6,26 @@ package ru.rakhmedov.spring.beans;
  */
 public class ClassicalMusic implements Music
 {
+	private ClassicalMusic()
+	{
+	}
+
+
+	public void init()
+	{
+		System.out.println("initialization");
+	}
+
+	public void destroy()
+	{
+		System.out.println("destroying");
+	}
+
+	public static ClassicalMusic getClassicalMusic()
+	{
+		return new ClassicalMusic();
+	}
+
 	@Override
 	public String getSong()
 	{

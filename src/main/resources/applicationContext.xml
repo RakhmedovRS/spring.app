@@ -11,7 +11,12 @@
 
 	<bean id="rockMusic" class="ru.rakhmedov.spring.beans.RockMusic"/>
 	<bean id="rapMusic" class="ru.rakhmedov.spring.beans.RapMusic"/>
-	<bean id="classicalMusic" class="ru.rakhmedov.spring.beans.ClassicalMusic"/>
+	<bean id="classicalMusic"
+	      class="ru.rakhmedov.spring.beans.ClassicalMusic"
+	      factory-method="getClassicalMusic"
+	      init-method="init"
+	      destroy-method="destroy"
+	      scope="prototype"/>
 
 	<bean id="musicPlayer"
 	      class="ru.rakhmedov.spring.beans.MusicPlayer"
