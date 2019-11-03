@@ -15,14 +15,6 @@
 	<bean id="musicPlayer"
 	      class="ru.rakhmedov.spring.beans.MusicPlayer"
 	      scope="prototype">
-		<constructor-arg>
-			<list>
-				<ref bean="classicalMusic"/>
-				<ref bean="rockMusic"/>
-				<ref bean="rapMusic"/>
-			</list>
-		</constructor-arg>
-
 		<property name="name" value="${musicPlayer.name}"/>
 		<property name="volume" value="${musicPlayer.volume}"/>
 	</bean>

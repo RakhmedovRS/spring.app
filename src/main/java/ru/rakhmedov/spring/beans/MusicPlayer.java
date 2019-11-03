@@ -1,7 +1,6 @@
 package ru.rakhmedov.spring.beans;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author RakhmedovRS
@@ -9,27 +8,27 @@ import java.util.List;
  */
 public class MusicPlayer
 {
-	private List<Music> musics = new ArrayList<>();
+	private ClassicalMusic classicalMusic;
+	private RapMusic rapMusic;
+	private RockMusic rockMusic;
 	private String name;
 	private int volume;
 
-	public MusicPlayer()
+	@Autowired
+	public MusicPlayer(ClassicalMusic classicalMusic, RapMusic rapMusic, RockMusic rockMusic)
 	{
+		this.classicalMusic = classicalMusic;
+		this.rapMusic = rapMusic;
+		this.rockMusic = rockMusic;
 	}
 
-	public MusicPlayer(List<Music> musics)
+	public String playMusic()
 	{
-		this.musics = musics;
-	}
-
-	public void playMusic()
-	{
-		System.out.println("Player name: " + getName());
-		System.out.println("Player volume: " + getVolume());
-		for (Music music: musics)
-		{
-			System.out.println("Playing: " + music.getSong());
-		}
+		return "Player name: " + getName() +
+			" \nPlayer volume: " + getVolume() +
+			" \nPlaying: " + classicalMusic.getSong() +
+			" \nPlaying: " + rapMusic.getSong() +
+			" \nPlaying: " + rockMusic.getSong();
 	}
 
 	public String getName()
