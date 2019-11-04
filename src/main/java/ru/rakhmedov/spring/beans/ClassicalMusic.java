@@ -2,6 +2,9 @@ package ru.rakhmedov.spring.beans;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
@@ -12,6 +15,15 @@ import javax.annotation.PreDestroy;
 @Component("classicalMusic")
 public class ClassicalMusic implements Music
 {
+	private static List<String> musicList;
+	private static Random random;
+
+	static
+	{
+		musicList = Arrays.asList("Winter", "Spring", "Summer");
+		random = new Random();
+	}
+
 	private ClassicalMusic()
 	{
 	}
@@ -31,6 +43,6 @@ public class ClassicalMusic implements Music
 	@Override
 	public String getSong()
 	{
-		return "Winter";
+		return musicList.get(random.nextInt(musicList.size()));
 	}
 }

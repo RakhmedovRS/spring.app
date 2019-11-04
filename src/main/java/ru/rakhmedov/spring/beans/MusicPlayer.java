@@ -1,6 +1,8 @@
 package ru.rakhmedov.spring.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import ru.rakhmedov.spring.common.Genre;
 
 /**
  * @author RakhmedovRS
@@ -8,27 +10,35 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class MusicPlayer
 {
-	private ClassicalMusic classicalMusic;
-	private RapMusic rapMusic;
-	private RockMusic rockMusic;
+	private Music rock;
+	private Music classical;
+	private Music rap;
 	private String name;
 	private int volume;
 
 	@Autowired
-	public MusicPlayer(ClassicalMusic classicalMusic, RapMusic rapMusic, RockMusic rockMusic)
+	public MusicPlayer(@Qualifier("rockMusic") Music rock,
+	                   @Qualifier("classicalMusic") Music classical,
+	                   @Qualifier("rapMusic") Music rap)
 	{
-		this.classicalMusic = classicalMusic;
-		this.rapMusic = rapMusic;
-		this.rockMusic = rockMusic;
+		this.rock = rock;
+		this.classical = classical;
+		this.rap = rap;
 	}
 
-	public String playMusic()
+	public String playMusic(Genre genre)
 	{
-		return "Player name: " + getName() +
-			" \nPlayer volume: " + getVolume() +
-			" \nPlaying: " + classicalMusic.getSong() +
-			" \nPlaying: " + rapMusic.getSong() +
-			" \nPlaying: " + rockMusic.getSong();
+		switch (genre)
+		{
+			case RAP:
+				return "Playing: " + rap.getSong();
+			case ROCK:
+				return "Playing: " + rock.getSong();
+			case CLASSIC:
+				return "Playing: " + classical.getSong();
+			default:
+				throw new UnsupportedOperationException("Such value is not supported");
+		}
 	}
 
 	public String getName()
