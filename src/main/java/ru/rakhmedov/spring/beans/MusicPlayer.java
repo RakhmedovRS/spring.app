@@ -2,6 +2,7 @@ package ru.rakhmedov.spring.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import ru.rakhmedov.spring.common.Genre;
 
 /**
@@ -14,6 +15,7 @@ public class MusicPlayer
 	private Music classical;
 	private Music rap;
 	private String name;
+	@Value("${musicPlayer.volume}")
 	private int volume;
 
 	@Autowired

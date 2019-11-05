@@ -31,13 +31,13 @@ public class ClassicalMusic implements Music
 	@PostConstruct
 	public void init()
 	{
-		System.out.println("initialization");
+		System.out.println(this.getClass().getCanonicalName() + "initialization");
 	}
 
 	@PreDestroy
 	public void destroy()
 	{
-		System.out.println("destroying");
+		System.out.println(this.getClass().getCanonicalName() + "destroying");
 	}
 
 	@Override

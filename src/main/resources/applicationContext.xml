@@ -16,7 +16,6 @@
 	      class="ru.rakhmedov.spring.beans.MusicPlayer"
 	      scope="prototype">
 		<property name="name" value="${musicPlayer.name}"/>
-		<property name="volume" value="${musicPlayer.volume}"/>
 	</bean>
 
 </beans>
