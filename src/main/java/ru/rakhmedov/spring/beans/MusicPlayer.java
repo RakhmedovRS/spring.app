@@ -1,9 +1,9 @@
 package ru.rakhmedov.spring.beans;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import ru.rakhmedov.spring.common.Genre;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * @author RakhmedovRS
@@ -11,36 +11,21 @@ import ru.rakhmedov.spring.common.Genre;
  */
 public class MusicPlayer
 {
-	private Music rock;
-	private Music classical;
-	private Music rap;
+	@Value("${musicPlayer.name}")
 	private String name;
 	@Value("${musicPlayer.volume}")
 	private int volume;
+	private List<Music> musicList;
+	private Random random = new Random();
 
-	@Autowired
-	public MusicPlayer(@Qualifier("rockMusic") Music rock,
-	                   @Qualifier("classicalMusic") Music classical,
-	                   @Qualifier("rapMusic") Music rap)
+	public MusicPlayer(List<Music> musicList)
 	{
-		this.rock = rock;
-		this.classical = classical;
-		this.rap = rap;
+		this.musicList = musicList;
 	}
 
-	public String playMusic(Genre genre)
+	public String playMusic()
 	{
-		switch (genre)
-		{
-			case RAP:
-				return "Playing: " + rap.getSong();
-			case ROCK:
-				return "Playing: " + rock.getSong();
-			case CLASSIC:
-				return "Playing: " + classical.getSong();
-			default:
-				throw new UnsupportedOperationException("Such value is not supported");
-		}
+		return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong();
 	}
 
 	public String getName()

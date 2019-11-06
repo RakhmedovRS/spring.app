@@ -1,6 +1,6 @@
-package ru.rakhmedov.spring.app;
+package ru.rakhmedov.spring;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.rakhmedov.spring.beans.Computer;
 
 /**
@@ -11,7 +11,7 @@ public class TestSpring
 {
 	public static void main(String[] args)
 	{
-		try (ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml"))
+		try (AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class))
 		{
 			Computer computer = applicationContext.getBean("computer", Computer.class);
 			System.out.println(computer);

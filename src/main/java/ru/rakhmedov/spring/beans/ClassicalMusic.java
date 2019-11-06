@@ -1,7 +1,5 @@
 package ru.rakhmedov.spring.beans;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -12,7 +10,6 @@ import javax.annotation.PreDestroy;
  * @author RakhmedovRS
  * @created 31-Oct-19
  */
-@Component("classicalMusic")
 public class ClassicalMusic implements Music
 {
 	private static List<String> musicList;
@@ -24,7 +21,7 @@ public class ClassicalMusic implements Music
 		random = new Random();
 	}
 
-	private ClassicalMusic()
+	public ClassicalMusic()
 	{
 	}
 

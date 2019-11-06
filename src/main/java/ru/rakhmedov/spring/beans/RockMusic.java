@@ -1,8 +1,5 @@
 package ru.rakhmedov.spring.beans;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -11,8 +8,6 @@ import java.util.Random;
  * @author RakhmedovRS
  * @created 31-Oct-19
  */
-@Component("rockMusic")
-@Scope("singleton")
 public class RockMusic implements Music
 {
 	private static List<String> musicList;
@@ -24,7 +19,7 @@ public class RockMusic implements Music
 		random = new Random();
 	}
 
-	private RockMusic()
+	public RockMusic()
 	{
 	}
 

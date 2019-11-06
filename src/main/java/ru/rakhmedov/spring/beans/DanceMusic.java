@@ -6,20 +6,20 @@ import java.util.Random;
 
 /**
  * @author RakhmedovRS
- * @created 01-Nov-19
+ * @created 06-Nov-19
  */
-public class RapMusic implements Music
+public class DanceMusic implements Music
 {
 	private static List<String> musicList;
 	private static Random random;
 
 	static
 	{
-		musicList = Arrays.asList("Gangstas paradise", "Lord give me a sign", "Candy shop");
+		musicList = Arrays.asList("Light between us", "Last train to Moscow", "Witchcraft");
 		random = new Random();
 	}
 
-	public RapMusic()
+	public DanceMusic()
 	{
 	}
 
